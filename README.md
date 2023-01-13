@@ -1,4 +1,4 @@
-# Hex
+# Hex ![workflow](https://github.com/ssengalanto/midt/actions/workflows/ci.yml/badge.svg) [![Go Report Card](https://goreportcard.com/badge/github.com/ssengalanto/hex)](https://goreportcard.com/report/github.com/ssengalanto/hex) [![Coverage Status](https://coveralls.io/repos/github/ssengalanto/hex/badge.svg)](https://coveralls.io/github/ssengalanto/hex) [![Go Reference](https://pkg.go.dev/badge/github.com/ssengalanto/hex.svg)](https://pkg.go.dev/github.com/ssengalanto/hex) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![Gopher Wiz](./assets/ssengalanto-gopher-wiz.png)
 
 `hex` is a collection of Go generic utility functions that deliver modularity and performance.
