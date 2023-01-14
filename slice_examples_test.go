@@ -2,7 +2,6 @@ package hex_test
 
 import (
 	"fmt"
-
 	"github.com/ssengalanto/hex"
 )
 
@@ -26,4 +25,16 @@ func ExampleFindIndex() {
 	// Output:
 	// 2
 	// -1
+}
+
+func ExampleMap() {
+	fmt.Println(hex.Map([]int{1, 2, 3}, func(el int, i int) int {
+		return el * el
+	}))
+	fmt.Println(hex.Map([]int{104, 101, 108, 108, 111}, func(el int, i int) string {
+		return string(rune(el))
+	}))
+	// Output:
+	// [1 4 9]
+	// [h e l l o]
 }

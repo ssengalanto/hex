@@ -24,3 +24,14 @@ func FindIndex[T any](s []T, fn func(el T) bool) int {
 
 	return -1
 }
+
+// Map creates a new slice from calling `fn(T, int)` for every slice element.
+func Map[T any, R any](s []T, fn func(el T, i int) R) []R {
+	res := make([]R, len(s))
+
+	for i, el := range s {
+		res[i] = fn(el, i)
+	}
+
+	return res
+}
