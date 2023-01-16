@@ -38,3 +38,9 @@ func ExampleMap() {
 	// [1 4 9]
 	// [h e l l o]
 }
+
+func ExamplePrepend() {
+	fmt.Println(hex.Prepend([]int{1, 2, 3}, 0))
+	// Output:
+	// [0 1 2 3]
+}

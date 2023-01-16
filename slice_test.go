@@ -98,3 +98,11 @@ func TestMap(t *testing.T) {
 		assert.Equal(t, []string{"h", "e", "l", "l", "o"}, s)
 	})
 }
+
+func TestPrepend(t *testing.T) {
+	t.Run("prepends the element in the slice", func(t *testing.T) {
+		t.Parallel()
+		s := hex.Prepend([]int{1, 2, 3}, 0)
+		assert.Equal(t, []int{0, 1, 2, 3}, s)
+	})
+}

@@ -35,3 +35,9 @@ func Map[T any, R any](s []T, fn func(el T, i int) R) []R {
 
 	return res
 }
+
+// Prepend prepends an element in slice `s`.
+func Prepend[T any](s []T, el T) []T {
+	s = append([]T{el}, s...)
+	return s
+}
