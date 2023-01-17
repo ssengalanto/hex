@@ -1,7 +1,7 @@
 package hex
 
 // Find returns the first element in slice `s` that satisfies `fn(T)` and true.
-// If no values satisfy fn(T) it will return zero value of the element and false.
+// If no values satisfy `fn(T)` it will return zero value of the element and false.
 func Find[T any](s []T, fn func(el T) bool) (T, bool) {
 	for _, el := range s {
 		if fn(el) {
@@ -14,7 +14,7 @@ func Find[T any](s []T, fn func(el T) bool) (T, bool) {
 }
 
 // FindIndex returns the index of the first element in slice `s` that satisfies `fn(T)`.
-// If no values satisfy fn(t) it will return -1.
+// If no values satisfy `fn(t)` it will return -1.
 func FindIndex[T any](s []T, fn func(el T) bool) int {
 	for i, el := range s {
 		if fn(el) {
@@ -34,6 +34,23 @@ func Map[T any, R any](s []T, fn func(el T, i int) R) []R {
 	}
 
 	return res
+}
+
+// Filter filters down to just the elements from slice `s` that satisfies `fn(T, int)`.
+func Filter[T any](s []T, fn func(el T, index int) bool) []T {
+	var result []T
+
+	for i, el := range s {
+		if fn(el, i) {
+			result = append(result, el)
+		}
+	}
+
+	if len(result) == 0 {
+		return []T{}
+	}
+
+	return result
 }
 
 // Prepend prepends an element in slice `s`.

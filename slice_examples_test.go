@@ -39,6 +39,18 @@ func ExampleMap() {
 	// [h e l l o]
 }
 
+func ExampleFilter() {
+	fmt.Println(hex.Filter([]int{1, 2, 3, 4}, func(el int, i int) bool {
+		return el > 2
+	}))
+	fmt.Println(hex.Filter([]int{1, 2, 3, 4}, func(el int, i int) bool {
+		return el > 5
+	}))
+	// Output:
+	// [3 4]
+	// []
+}
+
 func ExamplePrepend() {
 	fmt.Println(hex.Prepend([]int{1, 2, 3}, 0))
 	// Output:

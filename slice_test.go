@@ -99,6 +99,24 @@ func TestMap(t *testing.T) {
 	})
 }
 
+func TestFilter(t *testing.T) {
+	t.Run("returns filtered slice", func(t *testing.T) {
+		t.Parallel()
+		s := hex.Filter([]int{1, 2, 3, 4}, func(el int, i int) bool {
+			return el > 2
+		})
+		assert.Equal(t, []int{3, 4}, s)
+	})
+
+	t.Run("returns empty slice", func(t *testing.T) {
+		t.Parallel()
+		s := hex.Filter([]int{1, 2, 3, 4}, func(el int, i int) bool {
+			return el > 5
+		})
+		assert.Equal(t, []int{}, s)
+	})
+}
+
 func TestPrepend(t *testing.T) {
 	t.Run("prepends the element in the slice", func(t *testing.T) {
 		t.Parallel()
