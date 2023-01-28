@@ -53,6 +53,31 @@ func Filter[T any](s []T, fn func(el T, index int) bool) []T {
 	return result
 }
 
+// Chunk creates a slice of elements splits into groups the length of size.
+// If slice can't be split evenly, the final chunk will be the remaining elements.
+func Chunk[T any](s []T, sz int) [][]T {
+	if sz <= 0 {
+		panic("`sz` must be greater than zero")
+	}
+
+	n := len(s) / sz
+	if len(s)%sz != 0 {
+		n += 1
+	}
+
+	res := make([][]T, 0, n)
+
+	for i := 0; i < n; i++ {
+		l := (i + 1) * sz
+		if l > len(s) {
+			l = len(s)
+		}
+		res = append(res, s[i*sz:l])
+	}
+
+	return res
+}
+
 // Prepend prepends an element in slice `s`.
 func Prepend[T any](s []T, el T) []T {
 	s = append([]T{el}, s...)

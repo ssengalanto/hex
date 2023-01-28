@@ -51,6 +51,12 @@ func ExampleFilter() {
 	// []
 }
 
+func ExampleChunk() {
+	fmt.Println(hex.Chunk([]int{1, 2, 3, 4, 5}, 2))
+	// Output:
+	// [[1 2] [3 4] [5]]
+}
+
 func ExamplePrepend() {
 	fmt.Println(hex.Prepend([]int{1, 2, 3}, 0))
 	// Output:
