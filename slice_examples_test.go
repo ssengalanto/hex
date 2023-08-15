@@ -2,6 +2,7 @@ package hex_test
 
 import (
 	"fmt"
+
 	"github.com/ssengalanto/hex"
 )
 

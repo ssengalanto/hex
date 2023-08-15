@@ -8,8 +8,6 @@ import (
 )
 
 func TestFind(t *testing.T) {
-	t.Parallel()
-
 	tests := []struct {
 		name  string
 		s     []int
@@ -38,7 +36,6 @@ func TestFind(t *testing.T) {
 	}
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
-			t.Parallel()
 			v, ok := hex.Find(tc.s, tc.fn)
 			assert.Equal(t, tc.want, v)
 			assert.Equal(t, tc.found, ok)
@@ -47,8 +44,6 @@ func TestFind(t *testing.T) {
 }
 
 func TestFindIndex(t *testing.T) {
-	t.Parallel()
-
 	tests := []struct {
 		name string
 		s    []int
@@ -74,7 +69,6 @@ func TestFindIndex(t *testing.T) {
 	}
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
-			t.Parallel()
 			idx := hex.FindIndex(tc.s, tc.fn)
 			assert.Equal(t, tc.want, idx)
 		})
@@ -83,7 +77,6 @@ func TestFindIndex(t *testing.T) {
 
 func TestMap(t *testing.T) {
 	t.Run("returns the same slice type", func(t *testing.T) {
-		t.Parallel()
 		s := hex.Map([]int{1, 2, 3}, func(el int, i int) int {
 			return el * el
 		})
@@ -91,7 +84,6 @@ func TestMap(t *testing.T) {
 	})
 
 	t.Run("returns different slice type", func(t *testing.T) {
-		t.Parallel()
 		s := hex.Map([]int{104, 101, 108, 108, 111}, func(el int, i int) string {
 			return string(rune(el))
 		})
@@ -101,7 +93,6 @@ func TestMap(t *testing.T) {
 
 func TestFilter(t *testing.T) {
 	t.Run("returns filtered slice", func(t *testing.T) {
-		t.Parallel()
 		s := hex.Filter([]int{1, 2, 3, 4}, func(el int, i int) bool {
 			return el > 2
 		})
@@ -109,7 +100,6 @@ func TestFilter(t *testing.T) {
 	})
 
 	t.Run("returns empty slice", func(t *testing.T) {
-		t.Parallel()
 		s := hex.Filter([]int{1, 2, 3, 4}, func(el int, i int) bool {
 			return el > 5
 		})
@@ -119,13 +109,11 @@ func TestFilter(t *testing.T) {
 
 func TestChunk(t *testing.T) {
 	t.Run("returns chunked slice", func(t *testing.T) {
-		t.Parallel()
 		s := hex.Chunk([]int{1, 2, 3, 4, 5}, 2)
 		assert.Equal(t, [][]int{{1, 2}, {3, 4}, {5}}, s)
 	})
 
 	t.Run("panics when size less than 1", func(t *testing.T) {
-		t.Parallel()
 		assert.Panics(t, func() {
 			hex.Chunk([]int{1, 2, 3, 4, 5}, 0)
 		})
@@ -134,7 +122,6 @@ func TestChunk(t *testing.T) {
 
 func TestPrepend(t *testing.T) {
 	t.Run("prepends the element in the slice", func(t *testing.T) {
-		t.Parallel()
 		s := hex.Prepend([]int{1, 2, 3}, 0)
 		assert.Equal(t, []int{0, 1, 2, 3}, s)
 	})
